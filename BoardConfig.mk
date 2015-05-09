@@ -105,6 +105,11 @@ BOARD_SEPOLICY_UNION += \
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+WLAN_MODULES:
+	ln -sf /system/lib/modules/pronto/pronto_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
+
+TARGET_KERNEL_MODULES += WLAN_MODULES
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
