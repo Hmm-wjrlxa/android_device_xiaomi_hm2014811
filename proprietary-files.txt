@@ -93,7 +93,6 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 
 # DRM
 bin/qseecomd
-lib/libdrmdecrypt.so
 lib/libWVphoneAPI.so
 vendor/lib/drm/libdrmprplugin.so
 vendor/lib/drm/libdrmwvmplugin.so
