@@ -151,3 +151,6 @@ ro.build.hardware.version=P1
 
 # 141231 liuzhaofei for manul search network display 2G/3G/4G
 persist.radio.rat_on=combine
+
+# perf
+ro.min_freq_0=800000
