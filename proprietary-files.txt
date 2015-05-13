@@ -8,6 +8,14 @@ vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
+vendor/lib/libFlacSwDec.so
+vendor/lib/libqct_resampler.so
+vendor/lib/soundfx/libqcbassboost.so
+vendor/lib/soundfx/libqcreverb.so
+vendor/lib/soundfx/libqcvirt.so
+lib/soundfx/libdirac.so
+lib/soundfx/libqcomvisualizer.so
+lib/soundfx/libqcompostprocbundle.so
 etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
 etc/acdbdata/MTP/MTP_General_cal.acdb
 etc/acdbdata/MTP/MTP_Global_cal.acdb
@@ -92,6 +100,8 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 
 # DRM
 bin/qseecomd
+lib/libdrmdecrypt.so
+lib/libWVphoneAPI.so
 vendor/lib/drm/libdrmprplugin.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libdrmfs.so
@@ -100,6 +110,10 @@ vendor/lib/libprdrmdecrypt.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/mediadrm/libwvdrmengine.so
 
 # GPS
 bin/location-mq
@@ -158,6 +172,7 @@ etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
 # Media
+vendor/lib/libDivxDrm.so
 vendor/lib/libExtendedExtractor.so
 -vendor/lib/libHevcSwDecoder.so
 vendor/lib/libI420colorconvert.so
@@ -167,6 +182,7 @@ vendor/lib/libmm-color-convertor.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libSHIMDivxDrm.so
 
 # NFC firmware
 etc/firmware/Signedrompatch_v20.bin
@@ -243,14 +259,6 @@ etc/firmware/venus.mdt
 
 # Wifi
 lib/modules/pronto/pronto_wlan.ko
-
-# SoundFX
-lib/soundfx/libdirac.so
-lib/soundfx/libqcomvisualizer.so
-lib/soundfx/libqcompostprocbundle.so
-vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcreverb.so
-vendor/lib/soundfx/libqcvirt.so
 
 # More firmware
 etc/firmware/ice40.bin
