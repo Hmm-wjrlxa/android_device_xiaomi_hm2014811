@@ -60,7 +60,11 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     audio_policy.msm8916 \
-    libaudio-resampler
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    tinymix
 
 # Audio configuration
 PRODUCT_COPY_FILES += \

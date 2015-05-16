@@ -49,6 +49,7 @@ TARGET_KERNEL_CONFIG := cyanogenmod_msm8916_defconfig
 TARGET_PREBUILT_KERNEL := device/xiaomi/hm2014811/kernel
 
 # Audio
+AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
 BOARD_USES_ALSA_AUDIO := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 
