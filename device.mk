@@ -71,23 +71,24 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
-# Display
-PRODUCT_PACKAGES += \
-    copybit.msm8916 \
-    gralloc.msm8916 \
-    hwcomposer.msm8916 \
-    memtrack.msm8916
-
-# Camera
-PRODUCT_PACKAGES += \
-    camera.msm8916
-
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
     linville.key.pub.pem \
     regdbdump \
     regulatory.bin
+
+# Display
+PRODUCT_PACKAGES += \
+    copybit.msm8916 \
+    gralloc.msm8916 \
+    hwcomposer.msm8916 \
+    libtinyxml \
+    memtrack.msm8916
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8916
 
 # Filesystem
 PRODUCT_PACKAGES += \

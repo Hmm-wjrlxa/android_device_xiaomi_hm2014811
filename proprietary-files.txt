@@ -212,7 +212,6 @@ bin/mpdecision
 vendor/lib/libqc-opt.so
 
 # Postprocessing
-lib/libtinyxml.so
 lib/libtinyxml2.so
 bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
