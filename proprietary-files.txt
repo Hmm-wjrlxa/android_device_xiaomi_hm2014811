@@ -132,6 +132,9 @@ vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 # GPS
+bin/garden_app
+bin/gpsone_daemon
+bin/loc_launcher
 bin/location-mq
 bin/xtwifi-client
 bin/xtwifi-inet-agent
@@ -209,6 +212,8 @@ bin/mpdecision
 vendor/lib/libqc-opt.so
 
 # Postprocessing
+lib/libtinyxml.so
+lib/libtinyxml2.so
 bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
 -vendor/lib/libmm-abl.so
@@ -246,6 +251,7 @@ etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
 lib/librmnetctl.so
+lib/libcnefeatureconfig.so
 vendor/lib/libconfigdb.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
