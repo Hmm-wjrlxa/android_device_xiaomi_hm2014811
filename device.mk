@@ -153,14 +153,31 @@ PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.bt.sh \
     init.qcom.coex.sh \
-    init.qcom.fm.sh
+    init.qcom.fm.sh \
+    init.qcom.audio.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.modem_links.sh \
+    init.qcom.rootagent.sh \
+    init.qcom.sdio.sh \
+    init.qcom.uicc.sh \
+    init.qcom.wifi.sh \
+
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.class_main.sh \
+    init.mdm.sh \
+    init.qcom.class_core.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.factory.sh \
+    init.qcom.sh \
+    init.qcom.ssr.sh \
+    init.qcom.syspart_fixup.sh \
+    init.qcom.usb.sh
 
 # Wifi
 PRODUCT_PACKAGES += \
