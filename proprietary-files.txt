@@ -5,9 +5,11 @@ vendor/lib/libfastcvopt.so
 
 # Audio
 vendor/lib/libacdbloader.so
+vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
+vendor/lib/libaudioalsa.so
 vendor/lib/libFlacSwDec.so
 -vendor/lib/libqct_resampler.so
 vendor/lib/soundfx/libqcbassboost.so
@@ -20,6 +22,7 @@ lib/soundfx/libqcompostprocbundle.so
 # Bluetooth
 bin/btnvtool
 bin/hci_qcomm_init
+vendor/lib/libbt-vendor.so
 vendor/lib/libbtnv.so
 vendor/lib/liboi_sbc_decoder.so
 
@@ -30,6 +33,7 @@ lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
 lib/libqomx_core.so
+vendor/lib/libarcsoft_beauty_shot.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
@@ -57,13 +61,17 @@ vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_wavelet_lib.so
+vendor/lib/libmmi.so
 vendor/lib/libmmipl.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegenc.so
+vendor/lib/libmm-disp-apis.so
+vendor/lib/libmm-hdcpmgr.so
+vendor/lib/libmmhttpstack.so
 
-# Camera actuator
+# Camera autofocus
 vendor/lib/libactuator_dw9714_13p1ba_camcorder.so
 vendor/lib/libactuator_dw9714_13p1ba_camera.so
 vendor/lib/libactuator_dw9714_13p1ba.so
@@ -90,6 +98,16 @@ vendor/lib/libchromatix_ov8865_q8v18a_preview.so
 vendor/lib/libchromatix_ov8865_q8v18a_snapshot.so
 vendor/lib/libchromatix_ov8865_q8v18a_video_hd.so
 vendor/lib/libchromatix_ov8865_q8v18a_zsl.so
+vendor/lib/libchromatix_ov8865_sunny_common.so
+vendor/lib/libchromatix_ov8865_sunny_default_video.so
+vendor/lib/libchromatix_ov8865_sunny_hfr_60fps.so
+vendor/lib/libchromatix_ov8865_sunny_hfr_90fps.so
+vendor/lib/libchromatix_ov8865_sunny_hfr_120fps.so
+vendor/lib/libchromatix_ov8865_sunny_liveshot.so
+vendor/lib/libchromatix_ov8865_sunny_preview.so
+vendor/lib/libchromatix_ov8865_sunny_snapshot.so
+vendor/lib/libchromatix_ov8865_sunny_video_hd.so
+vendor/lib/libchromatix_ov8865_sunny_zsl.so
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_1_1.fw
@@ -149,6 +167,7 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
+vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30-a4xx.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
@@ -237,6 +256,8 @@ vendor/lib/libxml.so
 # Sensors
 lib/hw/sensors.qcom.so:lib/hw/sensors.msm8916.so
 vendor/lib/libcalmodule_akm.so
+vendor/lib/libcalmodule_common.so
+vendor/lib/libcalmodule_yamaha.so
 
 # Thermal
 bin/thermal-engine
@@ -261,6 +282,117 @@ etc/firmware/venus.mdt
 # Wifi
 lib/modules/pronto/pronto_wlan.ko
 
+# MMI
+vendor/lib/mmi_audio.so
+vendor/lib/mmi_battery.so
+vendor/lib/mmi_bt.so
+vendor/lib/mmi_camera.so
+vendor/lib/mmi_flashlight.so
+vendor/lib/mmi_fm.so
+vendor/lib/mmi_gps_garden.so
+vendor/lib/mmi_gsensor.so
+vendor/lib/mmi_gyroscope.so
+vendor/lib/mmi_headset.so
+vendor/lib/mmi_key.so
+vendor/lib/mmi_keypadbacklight.so
+vendor/lib/mmi_lcd.so
+vendor/lib/mmi_led.so
+vendor/lib/mmi_loopback.so
+vendor/lib/mmi_lsensor.so
+vendor/lib/mmi_msensor.so
+vendor/lib/mmi_psensor.so
+vendor/lib/mmi_sdcard.so
+vendor/lib/mmi_sim.so
+vendor/lib/mmi_sysinfo.so
+vendor/lib/mmi_torch.so
+vendor/lib/mmi_touch.so
+vendor/lib/mmi_touchext.so
+vendor/lib/mmi_touchpanel.so
+vendor/lib/mmi_usb_otg.so
+vendor/lib/mmi_vibrator.so
+vendor/lib/mmi_volume.so
+vendor/lib/mmi_wifi.so
+
 etc/firmware/ice40.bin
 
 vendor/lib/libNimsWrap.so
+vendor/lib/libcneapiclient.so
+vendor/lib/libcneconn.so
+vendor/lib/libcneqmiutils.so
+vendor/lib/libcneutils.so
+vendor/lib/libCommandSvc.so
+vendor/lib/lib-dplmedia.so
+vendor/lib/libdpmctmgr.so
+vendor/lib/libdpmframework.so
+vendor/lib/libdrmdecrypt.so
+vendor/lib/libdsucsd.so
+vendor/lib/libFaceDeform.so
+vendor/lib/libFaceProc.so
+vendor/lib/libFileMux.so
+vendor/lib/libGPTEE.so
+vendor/lib/libImageRemovalCloningJNI.so
+vendor/lib/lib-imscamera.so
+vendor/lib/lib-imsdpl.so
+vendor/lib/lib-imsqimf.so
+vendor/lib/lib-imsrcs.so
+vendor/lib/lib-imss.so
+vendor/lib/lib-imsSDP.so
+vendor/lib/lib-imsvt.so
+vendor/lib/lib-imsxml.so
+vendor/lib/liblisten.so
+vendor/lib/liblistenhardware.so
+vendor/lib/liblistenjni.so
+vendor/lib/liblistensoundmodel.so
+vendor/lib/liblistensoundmodel2.so
+vendor/lib/libloc_ext.so
+vendor/lib/liblowi_client.so
+vendor/lib/libmmiipstreammmihttp.so
+vendor/lib/libmmipstreamaal.so
+vendor/lib/libmmipstreamnetwork.so
+vendor/lib/libmmipstreamsourcehttp.so
+vendor/lib/libmmipstreamutils.so
+vendor/lib/libmm-qdcm.so
+vendor/lib/libmmQSM.so
+vendor/lib/libmmQTA.so
+vendor/lib/libmmrtpdecoder.so
+vendor/lib/libmmrtpencoder.so
+vendor/lib/libmmwfdinterface.so
+vendor/lib/libmmwfdsinkinterface.so
+vendor/lib/libmmwfdsrcinterface.so
+vendor/lib/libomx_amrdec_sharedlibrary.so
+vendor/lib/libomx_amrenc_sharedlibrary.so
+vendor/lib/libOmxMux.so
+vendor/lib/libomx_sharedlibrary.so
+vendor/lib/libqmi_client_helper.so
+vendor/lib/libqomx_jpegdec.so
+vendor/lib/lib-rcsimssjni.so
+vendor/lib/lib-rcsjni.so
+vendor/lib/lib-rtpcommon.so
+vendor/lib/lib-rtpcore.so
+vendor/lib/lib-rtpdaemoninterface.so
+vendor/lib/lib-rtpsl.so
+vendor/lib/libscve.so
+vendor/lib/libsd_sdk_display.so
+vendor/lib/libsregex.so
+vendor/lib/libsrsprocessing.so
+vendor/lib/libsubsystem_control.so
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libtar.so
+vendor/lib/libtzdrmgenprov.so
+vendor/lib/libtzplayready.so
+vendor/lib/libvoice-svc.so
+vendor/lib/libwfdcommonutils.so
+vendor/lib/libwfdhdcpcp.so
+vendor/lib/libwfdmmsink.so
+vendor/lib/libwfdmmsrc.so
+vendor/lib/libwfdmmutils.so
+vendor/lib/libwfdnative.so
+vendor/lib/libwfdrtsp.so
+vendor/lib/libwfdsm.so
+vendor/lib/libwfduibcinterface.so
+vendor/lib/libwfduibcsink.so
+vendor/lib/libwfduibcsinkinterface.so
+vendor/lib/libwfduibcsrc.so
+vendor/lib/libwfduibcsrcinterface.so
+vendor/lib/libwifiscanner.so
+vendor/lib/libxt_native.so
