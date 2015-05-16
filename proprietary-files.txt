@@ -404,6 +404,7 @@ bin/qcom-system-daemon
 bin/ptt_socket_app
 bin/usb_uicc_client
 bin/imsqmidaemon
+bin/imsdatadaemon
 bin/cnd
 bin/dpmd
 bin/ATFWD-daemon

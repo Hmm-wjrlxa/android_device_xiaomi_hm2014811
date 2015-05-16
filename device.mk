@@ -168,6 +168,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
+    init.qti.carrier.rc \
     ueventd.qcom.rc \
     init.class_main.sh \
     init.mdm.sh \
