@@ -26,50 +26,35 @@
 #
 
 import init.qcom.usb.rc
-import init.qcom.power.rc
-import init.qti.carrier.rc
+import init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
-    mkdir /firmware 0771 system system
-    mkdir /system 0777 root root
-    symlink /data/tombstones /tombstones
-    write /sys/block/mmcblk0/queue/scheduler noop
-    write /sys/block/mmcblk0/bdi/read_ahead_kb 512
 
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
-
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
-
-    chmod 0701 /mnt/media_rw
+    mkdir /storage/emulated/legacy 0555 root root
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /mnt/media_rw/usbdisk0 0700 media_rw media_rw
-
+    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+    mkdir /mnt/media_rw/uicc0 0700 media_rw media_rw
+    mkdir /mnt/media_rw/uicc1 0700 media_rw media_rw
     mkdir /storage/sdcard1 0700 root root
-    mkdir /storage/usbdisk0 0700 root root
+    mkdir /storage/uicc0 0700 root root
+    mkdir /storage/usbotg 0700 root root
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
+    export SECONDARY_STORAGE /storage/sdcard1
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
-    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk0
 
     # Support legacy paths
     symlink /storage/emulated/legacy /sdcard
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /storage/sdcard1 /external_sd
-    symlink /storage/sdcard1 /mnt/external_sd
-
-# Hardwareinfo
-    chmod 0660 /dev/hardwareinfo
-    chown system system /dev/hardwareinfo
-
-    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -194,60 +179,14 @@ on boot
 
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
-
-    chown system system /sys/class/timed_output/vibrator/pattern
-    chown system system /sys/class/timed_output/vibrator/enable
-    chown system system /sys/class/leds/keyboard-backlight/brightness
-    chown system system /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/leds/torch-light/brightness
-    chown system system /sys/class/leds/flashlight/brightness
-    chown system system /sys/class/leds/button-backlight/brightness
-    chown system system /sys/class/leds/jogball-backlight/brightness
-    chown system system /sys/class/leds/red/brightness
-    chown system system /sys/class/leds/red/blink
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/green/blink
-    chown system system /sys/class/leds/blue/brightness
-    chown system system /sys/class/leds/blue/blink 
-    chown system system /sys/class/leds/yellow/brightness
-    chown system system /sys/class/leds/yellow/blink 
-    chown system system /sys/class/leds/white/brightness
-    chown system system /sys/class/leds/white/blink
-    chown system system /sys/class/leds/cyan/brightness
-    chown system system /sys/class/leds/cyan/blink
-    chown system system /sys/class/leds/purple/brightness
-    chown system system /sys/class/leds/purple/blink 
     
-    chown system system /sys/class/rtc/rtc0/wakealarm
-    chmod 0666 /sys/class/rtc/rtc0/wakealarm
-
-on property:sys.boot_completed=1
-    write /sys/block/mmcblk0/queue/scheduler row
-
-    # bring all CPUs online
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-
-    start mpdecision
-
-on fs
-    mount_all fstab.qcom
-
-    setprop ro.crypto.fuse_sdcard true
-
-# import cne init file
-on post-fs
-    export LD_PRELOAD /vendor/lib/libNimsWrap.so
+    chown system system /sys/class/compass/akm09911/shipmenttest
+    chown 0774 /sys/class/compass/akm09911/shipmenttest
+    chown system system /sys/class/sensors/yas537-mag/yas_self_test
+    chown 0774 /sys/class/sensors/yas537-mag/yas_self_test
 
 # msm specific files that need to be created on /data
 on post-fs-data
-    mkdir /data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
-
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -339,6 +278,9 @@ service usbhub_init /system/bin/usbhub_init
 service qcomsysd /system/bin/qcom-system-daemon
     class main
 
+on property:sys.boot_completed=1
+    write /dev/kmsg "Boot completed "
+
 on property:persist.radio.atfwd.start=false
     stop atfwd
 
@@ -362,6 +304,13 @@ on property:persist.debug.trace=1
     write /sys/bus/coresight/devices/coresight-etm2/enable 1
     write /sys/bus/coresight/devices/coresight-etm3/enable 1
     write /sys/module/coresight_event/parameters/event_abort_enable 1
+
+# Allow usb charging to be disabled peristently
+on property:persist.sys.chgdisabled=1
+    write /sys/class/power_supply/battery/charging_enabled 0
+
+on property:persist.sys.chgdisabled=0
+    write /sys/class/power_supply/battery/charging_enabled 1
 
 on property:ro.board.platform=msm7630_fusion
     start usbhub_init
@@ -528,9 +477,11 @@ service qmuxd /system/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps qcom_diag
+    disabled
 
 service netmgrd /system/bin/netmgrd
     class main
+    disabled
 
 service qti /system/vendor/bin/qti
     class main
@@ -581,7 +532,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 \
+    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 -dd \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT
@@ -595,7 +546,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets \
+    -O/data/misc/wifi/sockets -dd \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
@@ -707,6 +658,12 @@ service qcom-sh /system/bin/sh /init.qcom.sh
     user root
     oneshot
 
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
 service wifi-sdio-on /system/bin/sh /system/etc/init.qcom.sdio.sh
     class late_start
     group wifi inet
@@ -718,6 +675,10 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    user root
    disabled
    oneshot
+
+
+on property:sys.boot_completed=1
+    start qcom-post-boot
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
@@ -756,12 +717,6 @@ service battery_monitor /system/bin/battery_monitor
     user system
     group system
     disabled
-
-on property:persist.radio.multisim.config=dsda
-    start ril-daemon1
-
-on property:persist.radio.multisim.config=dsds
-    start ril-daemon1
 
 service ril-daemon1 /system/bin/rild -c 1
     class main
@@ -808,15 +763,12 @@ service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emul
 
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
-    disabled
 
 service fuse_uicc0 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/uicc0 /storage/uicc0
     class late_start
-    disabled
 
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
     class late_start
-    disabled
 
 # Binding fuse mount point to /storage/emulated/legacy
 on property:init.svc.sdcard=running
@@ -914,161 +866,9 @@ service vm_bms /system/bin/vm_bms
     group root
     disabled
 
-#start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
-    class late_start
-    user camera
-    group camera system inet input graphics
-
-# Allow usb charging to be disabled peristently
-on property:persist.usb.chgdisabled=1
-    write /sys/class/power_supply/battery/charging_enabled 0
-
-on property:persist.usb.chgdisabled=0
-    write /sys/class/power_supply/battery/charging_enabled 1
-
-service qrngd /system/bin/qrngd -f
-   class main
-   user root
-   group root
-
-service qrngp /system/bin/qrngp -f
-   class main
-   user root
-   group root
-   oneshot
-   disabled
-
-on property:sys.boot_completed=1
-   start qrngp
-
-service qseecomd /system/bin/qseecomd
-   class core
-   user root
-   group root
-
-service mpdecision /system/bin/mpdecision --avg_comp
-   class main
-   user root
-   disabled
-
-service thermal-engine /system/bin/thermal-engine
-   class main
-   user root
-   group root
-
-service time_daemon /system/bin/time_daemon
-   class late_start
-   user root
-   group root
-
-service audiod /system/bin/audiod
-   class late_start
-   user system
-   group system
-
-on charger-fs
-   wait /dev/block/bootdevice/by-name/system
-   mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
-   chown root system /sys/class/power_supply/bms/current_now
-   chown root system /sys/class/power_supply/bms/voltage_ocv
-   chmod 0664 /sys/class/power_supply/bms/current_now
-   chmod 0664 /sys/class/power_supply/bms/voltage_ocv
-
-on charger
-    start vm_bms
-
-on boot
-    insmod /system/lib/modules/adsprpc.ko
-
-# +Caiyebo.wt, add, 20141210 for setGamma & setCe color adjust
-service coloradjust /system/bin/coloradjust
-    class late_start
-    disabled
-    user system
-
-# +Caiyebo.wt, add, 20141210 for setGamma & setCe color adjust
-on property:service.bootanim.exit=1
-    setprop persist.sys.temp_prefer 5
-    setprop persist.sys.temp_ce 5
-    start coloradjust
-
-on property:service.bootanim.exit=1
-    setprop persist.sys.temp_prefer 5
-    setprop persist.sys.temp_ce 5
-    start coloradjust
-   
-on property:persist.sys.display_prefer=1
-    start coloradjust
-    
-on property:persist.sys.display_prefer=2
-    start coloradjust
-    
-on property:persist.sys.display_prefer=3
-    start coloradjust
-
-on property:persist.sys.display_ce=10
-    start coloradjust
-    
-on property:persist.sys.display_ce=11
-    start coloradjust
-    
-on property:persist.sys.display_ce=12
-    start coloradjust
-# -Caiyebo.wt, add, 20141210 for setGamma & setCe color adjust
-
-service ppd /system/bin/mm-pp-daemon
-    class late_start
-    disabled
-    user system
-    socket pps stream 0660 system system
-    group system graphics
-
-on property:init.svc.surfaceflinger=stopped
-    stop ppd
-
-on property:init.svc.surfaceflinger=running
-    start ppd
-
-service wcnss-service /system/bin/wcnss_service
-    class late_start
-    user system
-    group system wifi radio
-    oneshot
-
-service imsqmidaemon /system/bin/imsqmidaemon
-    class main
-    user system
-    socket ims_qmid stream 0660 system radio
-    group ims radio net_raw log qcom_diag
-
-service imsdatadaemon /system/bin/imsdatadaemon
-    class main
-    user system
-    socket ims_datad stream 0660 system radio
-    group system ims wifi radio inet net_raw log qcom_diag net_admin
-    disabled
-
-on property:sys.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
-
-service ims_rtp_daemon /system/bin/ims_rtp_daemon
-   class main
-   user system
-   socket ims_rtpd stream 0660 system ims
-   group ims net_raw diag qcom_diag log
-   disabled
-
-on property:sys.ims.DATA_DAEMON_STATUS=1
-    start ims_rtp_daemon
-
-on property:ro.build.type=user
-    write /proc/sys/kernel/printk "6 6 1 7"
-
 service SensorCali /system/bin/SensorCali
     user root 
     oneshot
     disabled 
     on property:ril.sensor_read="right"
     start SensorCali
-    
