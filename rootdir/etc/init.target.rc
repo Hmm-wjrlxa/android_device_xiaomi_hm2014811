@@ -41,6 +41,8 @@ on post-fs
 on fs
     mount_all fstab.qcom
 
+    setprop ro.crypto.fuse_sdcard true
+
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
@@ -99,6 +101,7 @@ service qseecomd /system/bin/qseecomd
    group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
+   class main
    user root
    disabled
 
