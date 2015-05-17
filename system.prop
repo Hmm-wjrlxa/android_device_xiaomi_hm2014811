@@ -49,6 +49,7 @@ persist.demo.hdmirotationlock=false
 debug.sf.gpu_comp_tiling=1
 persist.modemanager.logs=2
 debug.modemanager.logs=2
+ro.sf.lcd_density=320
 
 # NITZ
 persist.rild.nitz_plmn=
@@ -80,6 +81,7 @@ persist.timed.enable=true
 
 # perf
 ro.min_freq=800000
+ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
 persist.cne.feature=4
 persist.dpm.feature=3
