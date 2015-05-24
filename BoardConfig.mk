@@ -76,6 +76,9 @@ TARGET_CONTINUOUS_SPLASH_ENABLED := true
 
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
+# GPS
+TARGET_QCOM_GPS_VARIANT := caf-kk3.10
+
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
