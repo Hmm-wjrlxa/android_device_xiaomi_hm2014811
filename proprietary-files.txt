@@ -144,6 +144,7 @@ etc/xtwifi.conf
 -lib/libloc_ds_api.so
 -lib/libloc_eng.so
 -priv-app/com.qualcomm.location.apk
+vendor/etc/calmodule.cfg
 vendor/lib/hw/flp.default.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
