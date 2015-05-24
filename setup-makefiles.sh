@@ -86,7 +86,7 @@ PRODUCT_PACKAGES += \\
     libmm-abl
 
 PRODUCT_PACKAGES += \\
-    gps.default \\
+    gps.msm8916 \\
     libgps.utils \\
     libloc_core \\
     libloc_eng
@@ -204,9 +204,9 @@ LOCAL_CERTIFICATE := PRESIGNED
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
-LOCAL_MODULE := gps.default
+LOCAL_MODULE := gps.msm8916
 LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/lib/hw/gps.default.so
+LOCAL_SRC_FILES := proprietary/lib/hw/gps.msm8916.so
 LOCAL_MODULE_PATH := \$(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := .so
