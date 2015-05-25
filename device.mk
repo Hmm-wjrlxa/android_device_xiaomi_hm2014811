@@ -106,6 +106,12 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
+# FM
+PRODUCT_PACKAGES += \
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
+
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
@@ -159,9 +165,6 @@ PRODUCT_PACKAGES += \
     init.qcom.audio.sh \
     init.qcom.efs.sync.sh \
     init.qcom.modem_links.sh \
-    init.qcom.rootagent.sh \
-    init.qcom.sdio.sh \
-    init.qcom.uicc.sh \
     init.qcom.wifi.sh
 
 PRODUCT_PACKAGES += \
@@ -169,14 +172,10 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
-    init.qti.carrier.rc \
     ueventd.qcom.rc \
-    init.class_main.sh \
     init.mdm.sh \
-    init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.factory.sh \
-    init.qcom.sh \
     init.qcom.ssr.sh \
     init.qcom.syspart_fixup.sh \
     init.qcom.usb.sh
