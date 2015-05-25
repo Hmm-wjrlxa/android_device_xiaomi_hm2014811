@@ -1,10 +1,3 @@
-# Audio
-vendor/lib/libacdbmapper.so
-lib/soundfx/libdirac.so
-
-# Bluetooth
-vendor/lib/libbt-vendor.so
-
 # Camera
 vendor/lib/libarcsoft_beauty_shot.so
 vendor/lib/libmmcamera_ov2680_5987fhq.so
@@ -54,19 +47,16 @@ vendor/lib/libchromatix_ov8865_sunny_snapshot.so
 vendor/lib/libchromatix_ov8865_sunny_video_hd.so
 vendor/lib/libchromatix_ov8865_sunny_zsl.so
 
-bin/garden_app
-bin/gpsone_daemon
-bin/loc_launcher
-
-lib/libtinyxml2.so
-
-lib/libcnefeatureconfig.so
-
 # Sensors
 lib/hw/sensors.qcom.so:lib/hw/sensors.msm8916.so
 vendor/lib/libcalmodule_akm.so
 vendor/lib/libcalmodule_common.so
 vendor/lib/libcalmodule_yamaha.so
+
+# Radio
+lib/libril.so
+vendor/lib/libdsi_netctrl.so
+vendor/lib/libdsnetutils.so
 
 # Modules
 lib/modules/pronto/pronto_wlan.ko
