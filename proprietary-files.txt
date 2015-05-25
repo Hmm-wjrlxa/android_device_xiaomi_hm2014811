@@ -406,14 +406,6 @@ vendor/lib/libwfduibcsrcinterface.so
 vendor/lib/libwifiscanner.so
 vendor/lib/libxt_native.so
 
-bin/qcom-system-daemon
-bin/ptt_socket_app
-bin/usb_uicc_client
-bin/imsqmidaemon
-bin/imsdatadaemon
-bin/cnd
-bin/dpmd
-bin/ATFWD-daemon
 bin/audiod
 bin/SensorCali
 bin/coloradjust
