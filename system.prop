@@ -86,7 +86,6 @@ persist.timed.enable=true
 ro.min_freq=800000
 ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
-persist.cne.feature=4
 persist.dpm.feature=3
 bluetooth.hfp.client=1
 persist.fuse_sdcard=true
