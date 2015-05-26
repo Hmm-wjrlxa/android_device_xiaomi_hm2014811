@@ -74,6 +74,7 @@ telephony.lteOnCdmaDevice=0
 persist.omh.enabled=false
 persist.radio.rat_on=combine
 
+ro.com.android.mobiledata=false
 ro.telephony.default_network=9
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
