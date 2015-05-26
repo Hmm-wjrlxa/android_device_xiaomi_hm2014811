@@ -193,7 +193,3 @@ vendor/lib/libwfduibcsrc.so
 vendor/lib/libwfduibcsrcinterface.so
 vendor/lib/libwifiscanner.so
 vendor/lib/libxt_native.so
-
-bin/audiod
-bin/SensorCali
-bin/coloradjust

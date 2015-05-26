@@ -397,6 +397,8 @@ service audiod /system/bin/audiod
    group system
 
 on charger
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
     chown root system /sys/class/power_supply/bms/current_now
     chown root system /sys/class/power_supply/bms/voltage_ocv
     chmod 0664 /sys/class/power_supply/bms/current_now
@@ -420,10 +422,6 @@ on charger
     write /sys/module/msm_pm/modes/cpu3/power_collapse/idle_enabled 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     start vm_bms
-
-on charger-fs
-   wait /dev/block/bootdevice/by-name/system
-   mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
 
 service ppd /system/bin/mm-pp-daemon
     class late_start
@@ -674,40 +672,3 @@ service vm_bms /system/bin/vm_bms
     user root
     group root
     disabled
-
-service SensorCali /system/bin/SensorCali
-    user root 
-    oneshot
-    disabled 
-    on property:ril.sensor_read="right"
-    start SensorCali
-
-# +Caiyebo.wt, add, 20141210 for setGamma & setCe color adjust
-service coloradjust /system/bin/coloradjust
-    class late_start
-    disabled
-    user system
-
-on property:service.bootanim.exit=1
-    setprop persist.sys.temp_prefer 5
-    setprop persist.sys.temp_ce 5
-    start coloradjust
-
-on property:persist.sys.display_prefer=1
-    start coloradjust
-
-on property:persist.sys.display_prefer=2
-    start coloradjust
-
-on property:persist.sys.display_prefer=3
-    start coloradjust
-
-on property:persist.sys.display_ce=10
-    start coloradjust
-
-on property:persist.sys.display_ce=11
-    start coloradjust
-
-on property:persist.sys.display_ce=12
-    start coloradjust
-# -Caiyebo.wt, add, 20141210 for setGamma & setCe color adjust
