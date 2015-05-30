@@ -66,13 +66,19 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 
 # DRM
 bin/qseecomd
+lib/libWVphoneAPI.so
 vendor/lib/drm/libdrmprplugin.so
+vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/mediadrm/libwvdrmengine.so
 
 # GPS
 bin/location-mq

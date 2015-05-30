@@ -122,6 +122,7 @@ vendor/lib/libCommandSvc.so
 vendor/lib/lib-dplmedia.so
 vendor/lib/libdpmctmgr.so
 vendor/lib/libdpmframework.so
+vendor/lib/libdrmdecrypt.so
 vendor/lib/libdsucsd.so
 vendor/lib/libFaceDeform.so
 vendor/lib/libFaceProc.so
