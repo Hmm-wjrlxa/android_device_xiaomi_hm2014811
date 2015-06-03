@@ -86,9 +86,13 @@ persist.timed.enable=true
 ro.min_freq=800000
 ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
-persist.dpm.feature=3
-bluetooth.hfp.client=1
+# SDCard
 persist.fuse_sdcard=true
+
+# Bluetooth
+bluetooth.hfp.client=1
+
+persist.dpm.feature=3
 ro.fm.transmitter=false
 ro.sys.usb.default.config=diag,serial_smd,rmnet_bam,adb
 persist.debug.wfd.enable=1
