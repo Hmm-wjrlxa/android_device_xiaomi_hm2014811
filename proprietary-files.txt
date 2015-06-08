@@ -58,6 +58,9 @@ lib/libril.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsnetutils.so
 
+# Audio
+lib/soundfx/libdirac.so
+
 # Modules
 lib/modules/pronto/pronto_wlan.ko
 lib/modules/ansi_cprng.ko

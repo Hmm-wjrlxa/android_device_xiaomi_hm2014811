@@ -21,7 +21,6 @@ bin/hci_qcomm_init
 vendor/lib/libbtnv.so
 vendor/lib/liboi_sbc_decoder.so
 
-
 # Camera
 bin/mm-qcamera-daemon
 lib/hw/camera.msm8916.so
