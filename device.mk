@@ -81,6 +81,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
+# Connectivity Engine support
+PRODUCT_PACKAGES += \
+    libcnefeatureconfig
+
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
@@ -164,7 +168,6 @@ PRODUCT_BOOT_JARS += WfdCommon
 # Connectivity Engine support
 ifeq ($(BOARD_USES_QCNE),true)
 PRODUCT_PACKAGES += \
-    libcnefeatureconfig \
     services-ext \
     init.cne.rc
 
