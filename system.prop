@@ -36,6 +36,9 @@ mmp.enable.3g2=true
 # set max starting background services
 ro.config.max_starting_bg=8
 
+# set roaming indicator to always show
+ro.config.always_show_roaming=true
+
 # Display
 debug.composition.type=c2d
 persist.hwc.mdpcomp.enable=true
