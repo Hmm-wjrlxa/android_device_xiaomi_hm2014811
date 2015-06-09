@@ -131,8 +131,6 @@ vendor/lib/libscale.so
 # Graphics firmware
 etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
-etc/firmware/a330_pfp.fw
-etc/firmware/a330_pm4.fw
 
 # Media
 vendor/lib/libDivxDrm.so
