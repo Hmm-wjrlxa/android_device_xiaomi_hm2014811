@@ -510,18 +510,13 @@
         <ctl name="MICBIAS CAPLESS Switch" value="1" />
     </path>
 
-    <path name="adc3">
-        <ctl name="DEC1 MUX" value="ADC2" />
-        <ctl name="ADC2 MUX" value="INP3" />
-    </path>
-
     <path name="speaker">
         <ctl name="RX3 MIX1 INP1" value="RX1" />
         <ctl name="SPK DAC Switch" value="1" />
     </path>
 
     <path name="speaker-mic">
-        <path name="adc3" />
+        <path name="adc1" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
     </path>
 
@@ -531,10 +526,10 @@
         <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
         <ctl name="EAR_S" value="Switch" />
-   </path>
+    </path>
 
     <path name="handset-mic">
-        <path name="adc3" />
+        <path name="adc1" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
     </path>
 
@@ -588,6 +583,7 @@
     </path>
 
     <path name="voice-headphones">
+        <path name="sidetone-headphone" />
         <path name="headphones" />
     </path>
 
@@ -642,9 +638,10 @@
 
     <!-- Dual MIC devices -->
     <path name="speaker-dmic-endfire">
-        <path name="adc3" />
-        <ctl name="DEC2 MUX" value="ADC1" />
+        <path name="adc1" />
+        <ctl name="DEC2 MUX" value="ADC2" />
         <ctl name="MI2S_TX Channels" value="Two" />
+        <ctl name="ADC2 MUX" value="INP3" />
     </path>
 
     <path name="dmic-endfire">
@@ -711,11 +708,11 @@
     </path>
 
     <path name="voice-tty-vco-handset-mic">
-        <path name="adc3" />
+        <path name="adc1" />
     </path>
 
     <path name="listen-handset-mic">
-        <path name="adc3" />
+        <path name="adc1" />
     </path>
 
     <path name="ADSP testfwk">
@@ -723,3 +720,4 @@
     </path>
 
 </mixer>
+
