@@ -82,3 +82,10 @@ lib/modules/qcrypto.ko
 lib/modules/radio-iris-transport.ko
 lib/modules/spidev.ko
 lib/modules/test-iosched.ko
+
+# Firmware
+etc/firmware/Signedrompatch_v20.bin
+etc/firmware/Signedrompatch_v21.bin
+etc/firmware/Signedrompatch_v24.bin
+etc/firmware/Signedrompatch_v30.bin
+etc/firmware/ice40.bin
