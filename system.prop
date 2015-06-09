@@ -13,6 +13,7 @@ audio.offload.gapless.enabled=false
 audio.offload.pcm.enable=false
 audio.offload.24bit.enable=0
 use.voice.path.for.pcm.voip=true
+vidc.enc.narrow.searchrange=1
 
 # Audio voice concurrency related flags
 voice.playback.conc.disabled=true
